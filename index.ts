@@ -63,3 +63,17 @@ console.log(shiftedValue); // 1
 // const arr8: number[] = [1, 2, 3, 4, 5];
 // const doubled: number[] = arr8.map((x) => x * 2);
 // console.log(doubled); // [2, 4, 6, 8, 10]
+// //array.fiter
+const people = [
+	{ name: "aaron", age: 65 },
+	{ name: "beth", age: 2 },
+	{ name: "cara", age: 13 },
+	{ name: "daniel", age: 3 },
+	{ name: "ella", age: 25 },
+	{ name: "fin", age: 1 },
+	{ name: "george", age: 43 },
+];
+
+const toddlers = people.filter((person) => person.age > 3);
+
+console.log(toddlers);

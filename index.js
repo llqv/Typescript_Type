@@ -22,13 +22,6 @@
 // console.log("Returned array is : " + arr2);
 // console.log("Length of the array is : " + length2);
 // // //array.shift(): xóa phần tử đầu tiên của mảng và trả về giá trị đã xóa.
-// const arr3: number[] = [10, 1, 2, 3];
-// const result: number[] = arr3.shift();
-// console.log(result);
-// const arr3: number[] = [1, 2, 3];
-// const shifted: number = arr3.shift();
-// console.log(arr3); // [2, 3]
-// console.log(shifted); // 1
 var arr3 = [1, 2, 3, 4, 5];
 var shiftedValue = arr3.shift();
 console.log(arr3); // [2, 3, 4, 5]
@@ -60,3 +53,15 @@ console.log(shiftedValue); // 1
 // const arr8: number[] = [1, 2, 3, 4, 5];
 // const doubled: number[] = arr8.map((x) => x * 2);
 // console.log(doubled); // [2, 4, 6, 8, 10]
+// //array.fiter
+var people = [
+    { name: "aaron", age: 65 },
+    { name: "beth", age: 2 },
+    { name: "cara", age: 13 },
+    { name: "daniel", age: 3 },
+    { name: "ella", age: 25 },
+    { name: "fin", age: 1 },
+    { name: "george", age: 43 },
+];
+var toddlers = people.filter(function (person) { return person.age > 3; });
+console.log(toddlers);
