@@ -42,6 +42,7 @@ console.log(typeof id);
 console.log(typeof firstname);
 console.log(typeof gender);
 console.log(typeof birthday);
+console.log(typeof phone);
 
 // //Khai báo type cho Object nested (ex: user.name.last)
 type typeName = {
@@ -195,6 +196,13 @@ declare namespace myNamespace {
 		sayHello(): void;
 	}
 }
+// //Global types
+// Global types là các kiểu dữ liệu được sử dụng trên toàn bộ hệ thống
+//  và có thể sử dụng trong bất kỳ nơi nào trong mã nguồn.
+//  Các kiểu dữ liệu toàn cầu bao gồm : `string` , `number`,`boolean`, `object`,`array`,…
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const myName = "John Doe";
 
 // //Các kiến thức trên có thể được viết trong TypeScript như sau:
 //Variables

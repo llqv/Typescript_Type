@@ -22,6 +22,7 @@ console.log(typeof id);
 console.log(typeof firstname);
 console.log(typeof gender);
 console.log(typeof birthday);
+console.log(typeof phone);
 var user1 = {
 	name: {
 		firstname: "vu",
@@ -84,6 +85,12 @@ var MyModule;
 // Sử dụng các đối tượng trong namespace
 MyModule.doSomething();
 console.log(MyModule.variable); // 42
+// //Global types
+// Global types là các kiểu dữ liệu được sử dụng trên toàn bộ hệ thống
+//  và có thể sử dụng trong bất kỳ nơi nào trong mã nguồn.
+//  Các kiểu dữ liệu toàn cầu bao gồm : `string` , `number`,`boolean`, `object`,`array`,…
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+var myName = "John Doe";
 // //Các kiến thức trên có thể được viết trong TypeScript như sau:
 //Variables
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -94,7 +101,6 @@ function greet(name) {
 	return "Hello ".concat(name);
 }
 //Promise
-// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
 import { Promise } from "es6-promise";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 var fetchData = function () {

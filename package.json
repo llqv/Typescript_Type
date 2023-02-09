@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "@types/es6-promise": "^3.3.0",
+    "@types/lodash": "^4.14.191",
     "@types/progress-bar-webpack-plugin": "^2.1.2",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
@@ -15,5 +16,8 @@
   },
   "scripts": {
     "lint": "eslint ./"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
