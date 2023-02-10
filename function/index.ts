@@ -23,7 +23,7 @@ console.log("element is : " + element);
 // element is : 9
 
 // // //array.unshift(element): thêm phần tử vào đầu mảng.
-const arr2 = ["orange", "mango", "banana", "sugar"];
+const arr2: string[] = ["orange", "mango", "banana", "sugar"];
 const length2 = arr2.unshift("water");
 console.log("Returned array is : " + arr2);
 console.log("Length of the array is : " + length2);
@@ -64,30 +64,35 @@ arr7.forEach((element, index) => {
 // // 4: 5
 
 // // //array.map(callback): duyệt qua từng phần tử trong mảng, gọi hàm callback với mỗi phần tử và trả về một mảng mới từ kết quả của callback.
-const arr8: number[] = [1, 2, 3, 4, 5];
-const doubled: number[] = arr8.map((x) => x * 2);
-console.log(doubled); // [2, 4, 6, 8, 10]
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const newArray1: Array<number> = [].map((num: number) => num * 2);
+console.log("newArray1 =>", newArray1);
+//Output
+//newArray1 => [2,4,6,8]
+
 // //array.filter : dùng để lọc ra các phần tử trong mảng thoả mãn điều kiện nào đó
-const people = [
-	{ name: "aaron", age: 65 },
-	{ name: "beth", age: 2 },
-	{ name: "cara", age: 13 },
-	{ name: "daniel", age: 3 },
-	{ name: "ella", age: 25 },
-	{ name: "fin", age: 1 },
-	{ name: "george", age: 43 },
+interface User {
+	name: string;
+	age: number;
+}
+const users: Array<User> = [
+	{ name: "John", age: 30 },
+	{ name: "Jane", age: 25 },
+	{ name: "Jim", age: 35 },
 ];
-const toddlers = people.filter((person) => person.age > 3);
-console.log(toddlers);
-// [
-// 	{ name: 'aaron', age: 65 },
-// 	{ name: 'cara', age: 13 },
-// 	{ name: 'ella', age: 25 },
-// 	{ name: 'george', age: 43 }
-//   ]
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const newArray: Array<User> = users.filter((user: User) => user.age >= 30);
+console.log(newArray);
+
+// const newArray: Array<User> = users.filter((user: User) => user.age >= 30);
+// console.log("new array =>", newArray);
+//Output new array => [ { name: 'John', age: 30 },
+//     { name: 'Jim', age: 35 }
+// ]
+
 // //concat(): dùng để nối 2 hay nhiều mảng với nhau
-const array1 = ["a", "b", "c"];
-const array2 = ["d", "e", "f"];
+const array1: string[] = ["a", "b", "c"];
+const array2: string[] = ["d", "e", "f"];
 const array3 = array1.concat(array2);
 
 console.log(array3); // > Array ["a", "b", "c", "d", "e", "f"]
@@ -95,9 +100,59 @@ console.log(array1); // > Array ["a", "b", "c"]
 console.log(array2); // > Array ["d", "e", "f"]
 
 // //find() : dùng để lọc phần tử trong mảng, tuy nhiên nó sẽ trả về giá trị đầu tiên tìm thấy ở trong mảng hoặc có thể trả về undefined nếu không tìm thấy
-const array = [5, 12, 8, 130, 44];
+const array: number[] = [5, 12, 8, 130, 44];
 const found = array.find(function (element) {
 	return element > 10;
 });
 console.log(found); // > 12
 console.log(array); // > Array [5, 12, 8, 130, 44]
+
+// //lodash
+import * as _ from "lodash";
+
+// Tính tổng của một mảng số
+const numbers1: number[] = [1, 2, 3, 4, 5];
+const sum1 = _.sum(numbers1);
+console.log(sum1); // 15
+
+// Tìm phần tử có tuổi nhỏ nhất trong một mảng các đối tượng
+type person = {
+	name: string;
+	age: number;
+};
+const people: person[] = [
+	{ name: "John", age: 25 },
+	{ name: "Jane", age: 30 },
+	{ name: "Jim", age: 35 },
+];
+const youngestPerson = _.minBy(people, "age");
+console.log(youngestPerson); // { name: 'John', age: 25 }
+
+// Gom nhóm các phần tử trong một mảng dựa trên một thuộc tính
+const animals = [
+	{ name: "Lion", type: "Mammal" },
+	{ name: "Shark", type: "Fish" },
+	{ name: "Turtle", type: "Reptile" },
+	{ name: "Eagle", type: "Bird" },
+];
+const groupedAnimals = _.groupBy(animals, "type");
+console.log(groupedAnimals);
+/*
+{
+  Mammal: [{ name: 'Lion', type: 'Mammal' }],
+  Fish: [{ name: 'Shark', type: 'Fish' }],
+  Reptile: [{ name: 'Turtle', type: 'Reptile' }],
+  Bird: [{ name: 'Eagle', type: 'Bird' }]
+}
+*/
+
+// Lấy các phần tử duy nhất trong một mảng
+const duplicates = [1, 2, 2, 3, 4, 4, 5];
+const uniqueNumbers = _.uniq(duplicates);
+console.log(uniqueNumbers); // [1, 2, 3, 4, 5]
+
+// Sắp xếp một mảng theo thứ tự tăng dần hoặc giảm dần
+const sortedNumbers = _.sortBy(numbers);
+console.log(sortedNumbers); // [1, 2, 3, 4, 5]
+const reversedSortedNumbers = _.sortBy(numbers).reverse();
+console.log(reversedSortedNumbers); // [5, 4, 3, 2, 1]

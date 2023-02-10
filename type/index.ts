@@ -240,3 +240,107 @@ class User {
 }
 const user = new User("John Doe", 30);
 console.log(user.sayHi());
+//Hướng đối tượng
+//extends
+class Animal {
+	name: string;
+	constructor(theName: string) {
+		this.name = theName;
+	}
+	move(distanceInMeters = 0) {
+		console.log(`${this.name} moved ${distanceInMeters}m.`);
+	}
+}
+class Snake extends Animal {
+	constructor(name: string) {
+		super(name);
+	}
+	move(distanceInMeters = 5) {
+		console.log("Slithering...");
+		super.move(distanceInMeters);
+	}
+}
+class Horse extends Animal {
+	constructor(name: string) {
+		super(name);
+	}
+	move(distanceInMeters = 45) {
+		console.log("Galloping...");
+		super.move(distanceInMeters);
+	}
+}
+const sam = new Snake("Sammy the Python");
+//Sammy the Python moved 5m
+const tom: Animal = new Horse("Tommy the Palomino");
+//Tommy the Palomino moved 34m
+sam.move();
+tom.move(34);
+
+//implement
+interface Animal1 {
+	makeSound(): void;
+}
+class Dog implements Animal1 {
+	makeSound() {
+		console.log("Woof woof!");
+	}
+}
+const myDog = new Dog();
+myDog.makeSound(); // Output: Woof woof!
+
+//
+interface Shape {
+	getArea(): number;
+}
+class Square implements Shape {
+	sideLength: number;
+	constructor(sideLength: number) {
+		this.sideLength = sideLength;
+	}
+	getArea() {
+		return this.sideLength * this.sideLength;
+	}
+}
+class Circle implements Shape {
+	radius: number;
+	constructor(radius: number) {
+		this.radius = radius;
+	}
+	getArea() {
+		return Math.PI * this.radius * this.radius;
+	}
+}
+const square = new Square(5);
+const circle = new Circle(3);
+console.log(square.getArea()); // 25
+console.log(circle.getArea()); // 28.27...
+
+// //Lodash
+// -Là một thư viện javascript được sử dụng để xử lý chuỗi, hàm, đối tượng và nhiều thao tác khác trong lập trình.
+//  Nó cung cấp một loạt hàm tiện ích để xử lý dữ liệu dễ dàng hơn và hiệu quả hơn
+//Lodash function
+import * as _ from "lodash";
+// ._assign
+const foo = { a: "a property" };
+const bar = { b: 4, c: "an other property" };
+
+const result = _.assign({ a: "an old property" }, foo, bar);
+console.log(result);
+// result => { a: 'a property', b: 4, c: 'an other property' }
+
+// _.find
+const users = [
+	{ firstName: "John", lastName: "Doe", age: 28, gender: "male" },
+	{ firstName: "Jane", lastName: "Doe", age: 5, gender: "female" },
+	{ firstName: "Jim", lastName: "Carrey", age: 54, gender: "male" },
+	{ firstName: "Kate", lastName: "Winslet", age: 40, gender: "female" },
+];
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const user12 = _.find(users, { lastName: "Doe", gender: "male" });
+// user -> { firstName: "John", lastName: "Doe", age: 28, gender: "male" }
+
+const underAgeUser = _.find(users, function (user) {
+	return user.age < 18;
+});
+console.log("underAgeUser =>", underAgeUser);
+// underAgeUser -> { firstName: "Jane", lastName: "Doe", age: 5, gender: "female" }

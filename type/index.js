@@ -1,5 +1,23 @@
 "use strict";
-export const __esModule = true;
+// Khai báo type cho các biến: string, number, boolean, undefined, null, date =>
+// khai báo biến với các type trên. dùng lệnh check type để kiểm tra
+var __extends = (this && this.__extends) || (function () {
+	var extendStatics = function (d, b) {
+		extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+		return extendStatics(d, b);
+	};
+	return function (d, b) {
+		if (typeof b !== "function" && b !== null)
+			throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+		extendStatics(d, b);
+		function __() { this.constructor = d; }
+		d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	};
+})();
+// eslint-disable-next-line no-undef
+exports.__esModule = true;
 // //khai bao bien
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 var fullname = "Vu";
@@ -101,11 +119,12 @@ function greet(name) {
 	return "Hello ".concat(name);
 }
 //Promise
-import { Promise } from "es6-promise";
+// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
+var es6_promise_1 = require("es6-promise");
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 var fetchData = function () {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	return new Promise(function (resolve, reject) {
+	return new es6_promise_1.Promise(function (resolve, reject) {
 		resolve("Data fetched successfully");
 	});
 };
@@ -123,3 +142,105 @@ var User = /** @class */ (function () {
 }());
 var user = new User("John Doe", 30);
 console.log(user.sayHi());
+//Hướng đối tượng
+//extends
+var Animal = /** @class */ (function () {
+	function Animal(theName) {
+		this.name = theName;
+	}
+	Animal.prototype.move = function (distanceInMeters) {
+		if (distanceInMeters === void 0) { distanceInMeters = 0; }
+		console.log("".concat(this.name, " moved ").concat(distanceInMeters, "m."));
+	};
+	return Animal;
+}());
+var Snake = /** @class */ (function (_super) {
+	__extends(Snake, _super);
+	function Snake(name) {
+		return _super.call(this, name) || this;
+	}
+	Snake.prototype.move = function (distanceInMeters) {
+		if (distanceInMeters === void 0) { distanceInMeters = 5; }
+		console.log("Slithering...");
+		_super.prototype.move.call(this, distanceInMeters);
+	};
+	return Snake;
+}(Animal));
+var Horse = /** @class */ (function (_super) {
+	__extends(Horse, _super);
+	function Horse(name) {
+		return _super.call(this, name) || this;
+	}
+	Horse.prototype.move = function (distanceInMeters) {
+		if (distanceInMeters === void 0) { distanceInMeters = 45; }
+		console.log("Galloping...");
+		_super.prototype.move.call(this, distanceInMeters);
+	};
+	return Horse;
+}(Animal));
+var sam = new Snake("Sammy the Python");
+//Sammy the Python moved 5m
+var tom = new Horse("Tommy the Palomino");
+//Tommy the Palomino moved 34m
+sam.move();
+tom.move(34);
+var Dog = /** @class */ (function () {
+	// eslint-disable-next-line @typescript-eslint/no-empty-function
+	function Dog() {
+	}
+	Dog.prototype.makeSound = function () {
+		console.log("Woof woof!");
+	};
+	return Dog;
+}());
+var myDog = new Dog();
+myDog.makeSound(); // Output: Woof woof!
+var Square = /** @class */ (function () {
+	function Square(sideLength) {
+		this.sideLength = sideLength;
+	}
+	Square.prototype.getArea = function () {
+		return this.sideLength * this.sideLength;
+	};
+	return Square;
+}());
+var Circle = /** @class */ (function () {
+	function Circle(radius) {
+		this.radius = radius;
+	}
+	Circle.prototype.getArea = function () {
+		return Math.PI * this.radius * this.radius;
+	};
+	return Circle;
+}());
+var square = new Square(5);
+var circle = new Circle(3);
+console.log(square.getArea()); // 25
+console.log(circle.getArea()); // 28.27...
+// //Lodash
+// -Là một thư viện javascript được sử dụng để xử lý chuỗi, hàm, đối tượng và nhiều thao tác khác trong lập trình.
+//  Nó cung cấp một loạt hàm tiện ích để xử lý dữ liệu dễ dàng hơn và hiệu quả hơn
+//Lodash function
+// eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
+var _ = require("lodash");
+// ._assign
+var foo = { a: "a property" };
+var bar = { b: 4, c: "an other property" };
+var result = _.assign({ a: "an old property" }, foo, bar);
+console.log(result);
+// result => { a: 'a property', b: 4, c: 'an other property' }
+// _.find
+var users = [
+	{ firstName: "John", lastName: "Doe", age: 28, gender: "male" },
+	{ firstName: "Jane", lastName: "Doe", age: 5, gender: "female" },
+	{ firstName: "Jim", lastName: "Carrey", age: 54, gender: "male" },
+	{ firstName: "Kate", lastName: "Winslet", age: 40, gender: "female" },
+];
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+var user12 = _.find(users, { lastName: "Doe", gender: "male" });
+// user -> { firstName: "John", lastName: "Doe", age: 28, gender: "male" }
+var underAgeUser = _.find(users, function (user) {
+	return user.age < 18;
+});
+console.log("underAgeUser =>", underAgeUser);
+// underAgeUser -> { firstName: "Jane", lastName: "Doe", age: 5, gender: "female" }

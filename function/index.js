@@ -57,24 +57,14 @@ arr7.forEach(function (element, index) {
 var arr8 = [1, 2, 3, 4, 5];
 var doubled = arr8.map(function (x) { return x * 2; });
 console.log(doubled); // [2, 4, 6, 8, 10]
-// //array.filter : dùng để lọc ra các phần tử trong mảng thoả mãn điều kiện nào đó
-var people = [
-    { name: "aaron", age: 65 },
-    { name: "beth", age: 2 },
-    { name: "cara", age: 13 },
-    { name: "daniel", age: 3 },
-    { name: "ella", age: 25 },
-    { name: "fin", age: 1 },
-    { name: "george", age: 43 },
+var users = [
+    { name: "John", age: 30 },
+    { name: "Jane", age: 25 },
+    { name: "Jim", age: 35 },
 ];
-var toddlers = people.filter(function (person) { return person.age > 3; });
-console.log(toddlers);
-// [
-// 	{ name: 'aaron', age: 65 },
-// 	{ name: 'cara', age: 13 },
-// 	{ name: 'ella', age: 25 },
-// 	{ name: 'george', age: 43 }
-//   ]
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+var newArray = users.filter(function (user) { return user.age >= 30; });
+console.log("new array =>", newArray);
 // //concat(): dùng để nối 2 hay nhiều mảng với nhau
 var array1 = ["a", "b", "c"];
 var array2 = ["d", "e", "f"];
@@ -89,3 +79,6 @@ var found = array.find(function (element) {
 });
 console.log(found); // > 12
 console.log(array); // > Array [5, 12, 8, 130, 44]
+//khi xác định type của 1 Array, ta cần xác định kiểu dữ liệu của Array đó là interface Array<T>.
+//  <T> là type generic được truyền vào, <T> ở trong type của method Array.find() là type generic
+//   của type generic đã được truyền vào interface Array<T> khi khởi tạo 1 Array
